@@ -3,6 +3,7 @@ require_relative "shopping_app/item"
 require_relative "shopping_app/customer"
 
 seller = Seller.new("DICストア")
+
 10.times{ Item.new("CPU", 40830, seller) }
 10.times{ Item.new("メモリー", 13880, seller) }
 10.times{ Item.new("マザーボード", 28980, seller) }
