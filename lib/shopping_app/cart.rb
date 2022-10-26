@@ -56,13 +56,20 @@ Exigence
   # - La propriété de tous les articles du panier
   (Cart#items) est transférée au propriétaire du panier.
   # - Le contenu du panier (Cart#items) est vide.
+
+
+
   Le montant de l'achat de tous les articles du panier (Cart#items)
    est transféré du portefeuille du propriétaire du panier au portefeuille .
  ❌La propriété de tous les articles du panier (Cart#items) est transférée au propriétaire du panier.
  ❌Contenu du panier vide (Cart#items)
+
+
+
   Des astuces
   # - portefeuille du propriétaire du panier ==> self.owner.wallet
   # - Portefeuille du propriétaire de l'objet ==> item.owner.wallet
   # - L'argent est transféré ==> Retirez ce montant du portefeuille (?) et déposez ce montant dans le portefeuille (?)
   # - la propriété de l'article est transférée au propriétaire du panier ==> réécrire le propriétaire (item.owner = ?)
-=end
+
+=end 
