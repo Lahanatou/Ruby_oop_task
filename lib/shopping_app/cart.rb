@@ -11,6 +11,22 @@ class Cart
     @items = []
   end
 
+
+  class Cart
+    include owner
+    include ItemManager
+    #attr_accessor :owner la
+
+    def initialize(Ownable)
+      self.Ownable = Ownable
+      @items = []
+    end
+
+
+
+
+
+
   def items
     # Cartにとってのitemsは自身の@itemsとしたいため、ItemManagerのitemsメソッドをオーバーライドします。
     # CartインスタンスがItemインスタンスを持つときは、オーナー権限の移譲をさせることなく、自身の@itemsに格納(Cart#add)するだけだからです。
@@ -30,6 +46,31 @@ class Cart
     puts owner.wallet.balance
     return if owner.wallet.balance < total_amount
     owner.wallet.balance = owner.wallet.balance.withdraw(total_amount)
+    #self.owner.wallet = self.owner.wallet.withdraw(total_amount)
+    #item.owner.wallet.deposit(total_amount)
+    #item.owner = self.owner
+    @items = []
+  # ## 要件
+  #   - カートの中身（Cart#items）のすべてのアイテムの購入金額が、カートのオーナーのウォレットからアイテムのオーナーのウォレットに移されること。
+  #   - カートの中身（Cart#items）のすべてのアイテムのオーナー権限が、カートのオーナーに移されること。
+  #   - カートの中身（Cart#items）が空になること。
+
+  # ## ヒント
+  #   - カートのオーナーのウォレット ==> self.owner.wallet
+  #   - アイテムのオーナーのウォレット ==> item.owner.wallet
+  #   - お金が移されるということ ==> (？)のウォレットからその分を引き出して、(？)のウォレットにその分を入金するということ
+  #   - アイテムのオーナー権限がカートのオーナーに移されること ==> オーナーの書き換え(item.owner = ?)
+  end
+
+
+
+
+
+  def check_out
+    puts total_amount
+    puts Ownable.wallet.balance
+    return if Ownable.wallet.balance < total_amount
+    owner.wallet.balance = Ownable.wallet.balance.withdraw(total_amount)
     #self.owner.wallet = self.owner.wallet.withdraw(total_amount)
     #item.owner.wallet.deposit(total_amount)
     #item.owner = self.owner
@@ -72,4 +113,4 @@ Exigence
   # - L'argent est transféré ==> Retirez ce montant du portefeuille (?) et déposez ce montant dans le portefeuille (?)
   # - la propriété de l'article est transférée au propriétaire du panier ==> réécrire le propriétaire (item.owner = ?)
 
-=end 
+=end
