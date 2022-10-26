@@ -4,8 +4,8 @@ class Wallet
   attr_reader :balance
   #attr_accessor :owner
 
-  def initialize(Ownable)
-    self.Ownable = Ownable
+  def initialize(owner)
+    self.owner = owner
     @balance = 0
   end
 
